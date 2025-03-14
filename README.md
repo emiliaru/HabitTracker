@@ -1,55 +1,75 @@
 # Habit Tracker
 
-A modern web application for tracking daily, weekly, and monthly habits. Built with .NET 8 and Clean Architecture principles.
+A modern web application for tracking daily, weekly, and monthly habits. Built with .NET 8 and React, featuring a beautiful Material-UI interface and comprehensive statistics tracking.
 
 ## Tech Stack
 
 ### Backend
 - ASP.NET Core 8 Web API
-- Entity Framework Core with SQL Server
+- Entity Framework Core with MySQL
 - Clean Architecture
 - Repository Pattern
+- Statistics Service for habit analytics
 
-### Frontend (Coming Soon)
+### Frontend
 - React with TypeScript
-- Material-UI
-- React Query
-- React Router
+- Material-UI components
+- React Query for data fetching
+- Dark/Light mode support
+- Responsive design
+
+## Features
+
+- Create and manage habits with customizable frequencies
+- Track daily progress and streaks
+- Comprehensive statistics and analytics
+  - Current and longest streaks
+  - Completion rates
+  - Progress by day of week
+  - Category-based analytics
+- Dark/Light mode with system preference detection
+- Modern, responsive UI with smooth animations
+- Category organization for habits
+- Archive completed or abandoned habits
 
 ## Project Structure
 
-- `HabitTracker.API` - Web API layer
-- `HabitTracker.Core` - Domain models and business logic
-- `HabitTracker.Application` - Application interfaces and DTOs
+- `HabitTracker.API` - Web API endpoints and configuration
+- `HabitTracker.Core` - Domain models and entities
+- `HabitTracker.Application` - Application services, interfaces, and DTOs
 - `HabitTracker.Infrastructure` - Data access and external services
+- `habit-tracker-client` - React frontend application
 
 ## Getting Started
 
 ### Prerequisites
 - .NET 8 SDK
-- SQL Server (LocalDB or full instance)
-- Visual Studio 2022 or VS Code
+- MySQL Server
+- Node.js and npm
+- Visual Studio 2022, VS Code, or your preferred IDE
 
 ### Setup
 
 1. Clone the repository
-2. Navigate to the project directory
-3. Run the following commands:
+2. Set up the database connection in `appsettings.json`
+3. Navigate to the project directory
+4. Run the following commands:
 
 ```bash
-# Restore dependencies
+# Backend setup
 dotnet restore
-
-# Create database (from HabitTracker.API directory)
-dotnet ef database update
-
-# Run the application
+dotnet ef database update --project HabitTracker.Infrastructure --startup-project HabitTracker.API
 dotnet run --project HabitTracker.API
+
+# Frontend setup
+cd habit-tracker-client
+npm install
+npm run dev
 ```
 
-The API will be available at:
-- HTTPS: https://localhost:7001
-- HTTP: http://localhost:5000
+The application will be available at:
+- Backend API: http://localhost:5000
+- Frontend: http://localhost:5174
 
 ## API Endpoints
 
@@ -60,22 +80,13 @@ The API will be available at:
 - `PUT /api/habits/{id}` - Update a habit
 - `DELETE /api/habits/{id}` - Delete a habit
 
-### Habit Progress
-- `GET /api/habits/{id}/progress` - Get progress for a habit
-- `POST /api/habits/{id}/progress` - Add progress for a habit
+### Statistics
+- `GET /api/statistics/habit/{id}` - Get habit statistics
+- `GET /api/statistics/category/{id}` - Get category statistics
+- `GET /api/statistics/user` - Get user statistics
 
-## Features
-
-- ✅ Create, read, update, and delete habits
-- ✅ Track daily, weekly, or monthly habits
-- ✅ Record progress for each habit
-- ✅ View habit completion statistics
-- ✅ Archive completed or abandoned habits
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+### Categories
+- `GET /api/categories` - Get all categories
+- `POST /api/categories` - Create a new category
+- `PUT /api/categories/{id}` - Update a category
+- `DELETE /api/categories/{id}` - Delete a category
