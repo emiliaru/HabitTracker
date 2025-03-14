@@ -1,92 +1,92 @@
-# Habit Tracker
+# Śledzik Nawyków
 
-A modern web application for tracking daily, weekly, and monthly habits. Built with .NET 8 and React, featuring a beautiful Material-UI interface and comprehensive statistics tracking.
+Nowoczesna aplikacja webowa do śledzenia codziennych, tygodniowych i miesięcznych nawyków. Zbudowana przy użyciu .NET 8 i React, z pięknym interfejsem Material-UI i kompleksowym systemem statystyk.
 
-## Tech Stack
+## Technologie
 
 ### Backend
 - ASP.NET Core 8 Web API
-- Entity Framework Core with MySQL
-- Clean Architecture
-- Repository Pattern
-- Statistics Service for habit analytics
+- Entity Framework Core z MySQL
+- Architektura Clean Architecture
+- Wzorzec Repository
+- Serwis statystyk do analizy nawyków
 
 ### Frontend
-- React with TypeScript
-- Material-UI components
-- React Query for data fetching
-- Dark/Light mode support
-- Responsive design
+- React z TypeScript
+- Komponenty Material-UI
+- React Query do pobierania danych
+- Tryb ciemny/jasny
+- Responsywny design
 
-## Features
+## Funkcjonalności
 
-- Create and manage habits with customizable frequencies
-- Track daily progress and streaks
-- Comprehensive statistics and analytics
-  - Current and longest streaks
-  - Completion rates
-  - Progress by day of week
-  - Category-based analytics
-- Dark/Light mode with system preference detection
-- Modern, responsive UI with smooth animations
-- Category organization for habits
-- Archive completed or abandoned habits
+- Tworzenie i zarządzanie nawykami z dostosowywanymi częstotliwościami
+- Śledzenie dziennych postępów i serii
+- Kompleksowe statystyki i analizy
+  - Aktualne i najdłuższe serie
+  - Wskaźniki ukończenia
+  - Postępy według dni tygodnia
+  - Analityka według kategorii
+- Tryb ciemny/jasny z wykrywaniem preferencji systemowych
+- Nowoczesny, responsywny interfejs z płynnymi animacjami
+- Organizacja nawyków w kategorie
+- Archiwizacja ukończonych lub porzuconych nawyków
 
-## Project Structure
+## Struktura Projektu
 
-- `HabitTracker.API` - Web API endpoints and configuration
-- `HabitTracker.Core` - Domain models and entities
-- `HabitTracker.Application` - Application services, interfaces, and DTOs
-- `HabitTracker.Infrastructure` - Data access and external services
-- `habit-tracker-client` - React frontend application
+- `HabitTracker.API` - Endpointy API i konfiguracja
+- `HabitTracker.Core` - Modele domenowe i encje
+- `HabitTracker.Application` - Serwisy aplikacyjne, interfejsy i DTOs
+- `HabitTracker.Infrastructure` - Dostęp do danych i usługi zewnętrzne
+- `habit-tracker-client` - Aplikacja frontendowa React
 
-## Getting Started
+## Jak Zacząć
 
-### Prerequisites
+### Wymagania
 - .NET 8 SDK
 - MySQL Server
-- Node.js and npm
-- Visual Studio 2022, VS Code, or your preferred IDE
+- Node.js i npm
+- Visual Studio 2022, VS Code lub preferowane IDE
 
-### Setup
+### Instalacja
 
-1. Clone the repository
-2. Set up the database connection in `appsettings.json`
-3. Navigate to the project directory
-4. Run the following commands:
+1. Sklonuj repozytorium
+2. Skonfiguruj połączenie z bazą danych w `appsettings.json`
+3. Przejdź do katalogu projektu
+4. Uruchom następujące komendy:
 
 ```bash
-# Backend setup
+# Konfiguracja backendu
 dotnet restore
 dotnet ef database update --project HabitTracker.Infrastructure --startup-project HabitTracker.API
 dotnet run --project HabitTracker.API
 
-# Frontend setup
+# Konfiguracja frontendu
 cd habit-tracker-client
 npm install
 npm run dev
 ```
 
-The application will be available at:
+Aplikacja będzie dostępna pod adresami:
 - Backend API: http://localhost:5000
 - Frontend: http://localhost:5174
 
-## API Endpoints
+## Endpointy API
 
-### Habits
-- `GET /api/habits` - Get all habits
-- `GET /api/habits/{id}` - Get a specific habit
-- `POST /api/habits` - Create a new habit
-- `PUT /api/habits/{id}` - Update a habit
-- `DELETE /api/habits/{id}` - Delete a habit
+### Nawyki
+- `GET /api/habits` - Pobierz wszystkie nawyki
+- `GET /api/habits/{id}` - Pobierz konkretny nawyk
+- `POST /api/habits` - Utwórz nowy nawyk
+- `PUT /api/habits/{id}` - Zaktualizuj nawyk
+- `DELETE /api/habits/{id}` - Usuń nawyk
 
-### Statistics
-- `GET /api/statistics/habit/{id}` - Get habit statistics
-- `GET /api/statistics/category/{id}` - Get category statistics
-- `GET /api/statistics/user` - Get user statistics
+### Statystyki
+- `GET /api/statistics/habit/{id}` - Pobierz statystyki nawyku
+- `GET /api/statistics/category/{id}` - Pobierz statystyki kategorii
+- `GET /api/statistics/user` - Pobierz statystyki użytkownika
 
-### Categories
-- `GET /api/categories` - Get all categories
-- `POST /api/categories` - Create a new category
-- `PUT /api/categories/{id}` - Update a category
-- `DELETE /api/categories/{id}` - Delete a category
+### Kategorie
+- `GET /api/categories` - Pobierz wszystkie kategorie
+- `POST /api/categories` - Utwórz nową kategorię
+- `PUT /api/categories/{id}` - Zaktualizuj kategorię
+- `DELETE /api/categories/{id}` - Usuń kategorię
